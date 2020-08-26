@@ -324,3 +324,13 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include vendor/lineage/config/partner_gms.mk
+
+# QTI Perf
+ifeq ($(BOARD_USES_QCOM_HARDWARE),)
+-include vendor/qcom/common/perf/perf-vendor.mk
+TARGET_COMMON_QTI_COMPONENTS := perf
+
+PRODUCT_BOOT_JARS += \
+    QPerformance \
+    UxPerformance
+endif
